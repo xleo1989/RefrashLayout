@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RefrashLayout">
+        <attr name="topView" format="reference"/>
+        <attr name="mainView" format="reference"/>
+        <attr name="bottomView" format="reference"/>
+    </declare-styleable>
+</resources>
