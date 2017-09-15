@@ -1,6 +1,6 @@
 # RefrashLayout
 ##example
-   **xml**
+   **xml** \n
    <com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
