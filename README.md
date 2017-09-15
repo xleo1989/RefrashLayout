@@ -27,8 +27,9 @@
               ></android.support.v7.widget.RecyclerView>
        </com.x.leo.refrashviews.RefrashLayout>  
        
-   **java**
-    refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
+   **java**  
+     
+         refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
                 @Override
                 public void onTopRefrash() {
                     mPresenter.initLoanData();
