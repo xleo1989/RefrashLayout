@@ -2,7 +2,7 @@
 ---  
 ##example  
    **xml**  
-       <com.x.leo.refrashviews.RefrashLayout
+       <code><com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:id = "@+id/rf_myloan"
