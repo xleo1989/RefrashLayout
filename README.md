@@ -2,7 +2,8 @@
 ---  
 ##example  
    **xml**  
-       <code><com.x.leo.refrashviews.RefrashLayout
+       <code>
+      <com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:id = "@+id/rf_myloan"
@@ -24,7 +25,8 @@
               android:layout_gravity="center_horizontal"
               android:paddingTop="@dimen/dp20"
               ></android.support.v7.widget.RecyclerView>
-       </com.x.leo.refrashviews.RefrashLayout></code>
+       </com.x.leo.refrashviews.RefrashLayout>
+   </code>
    **java**
     refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
                 @Override
