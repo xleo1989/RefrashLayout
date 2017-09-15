@@ -2,7 +2,7 @@
 ---  
 ##example  
    **xml**  
-       <code>
+   
       <com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
@@ -25,8 +25,8 @@
               android:layout_gravity="center_horizontal"
               android:paddingTop="@dimen/dp20"
               ></android.support.v7.widget.RecyclerView>
-       </com.x.leo.refrashviews.RefrashLayout>
-   </code>
+       </com.x.leo.refrashviews.RefrashLayout>  
+       
    **java**
     refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
                 @Override
