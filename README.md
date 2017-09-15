@@ -1,6 +1,6 @@
 # RefrashLayout
-##example
-   **xml**   
+##example  
+   **xml**   
    <com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
@@ -8,7 +8,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:mainView="@+id/rv_loan"
         app:topView="@+id/top_view"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent">  
         <TextView
             android:layout_width="match_parent"
             android:id = "@+id/top_view"
