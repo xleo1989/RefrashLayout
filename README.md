@@ -1,7 +1,7 @@
 # RefrashLayout
-example:
-   xml:
-   <com.x.leo.refrashviews.RefrashLayout
+**example**
+   **xml**
+   <com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:id = "@+id/rf_myloan"
@@ -26,8 +26,8 @@ example:
             ></android.support.v7.widget.RecyclerView>
 
     </com.x.leo.refrashviews.RefrashLayout>
-   java:
-    refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
+   **java**
+    refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
                 @Override
                 public void onTopRefrash() {
                     mPresenter.initLoanData();
