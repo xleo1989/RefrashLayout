@@ -1,8 +1,9 @@
-# RefrashLayout
----
-##example
-   **xml**
 
+# RefrashLayout  
+---  
+##example  
+   **xml**  
+   
       <com.x.leo.refrashviews.RefrashLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
@@ -10,7 +11,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:mainView="@+id/rv_loan"
         app:topView="@+id/top_view"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent">  
           <TextView
               android:layout_width="match_parent"
               android:id = "@+id/top_view"
@@ -25,10 +26,10 @@
               android:layout_gravity="center_horizontal"
               android:paddingTop="@dimen/dp20"
               ></android.support.v7.widget.RecyclerView>
-       </com.x.leo.refrashviews.RefrashLayout>
-
-   **java**
-
+       </com.x.leo.refrashviews.RefrashLayout>  
+       
+   **java**  
+     
          refrashLayout.setOnRefrashListener(new OnRefrashAdapter() {
                 @Override
                 public void onTopRefrash() {
