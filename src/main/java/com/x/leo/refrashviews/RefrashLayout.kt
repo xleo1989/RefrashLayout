@@ -261,7 +261,7 @@ class RefrashLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
                     val linearManager = recycler.layoutManager as LinearLayoutManager
                     //获取第一个可见view的位置
                     val firstItemPosition = linearManager.findFirstCompletelyVisibleItemPosition()
-                    if (firstItemPosition == 0 && isTopRefrashable()) {
+                    if (firstItemPosition <= 0 && isTopRefrashable()) {
                         changeToDragState()
                         return true
                     }
