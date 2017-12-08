@@ -4,7 +4,7 @@
 ##example  
    **xml**  
    
-      <com.x.leo.refrashviews.RefrashLayout
+      <com.x.leo.refrashviews.RefreshLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:id = "@+id/rf_myloan"
@@ -26,7 +26,7 @@
               android:layout_gravity="center_horizontal"
               android:paddingTop="@dimen/dp20"
               ></android.support.v7.widget.RecyclerView>
-       </com.x.leo.refrashviews.RefrashLayout>  
+       </com.x.leo.refrashviews.RefreshLayout>
        
    **java**  
      

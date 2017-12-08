@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RefrashLayout">
+    <declare-styleable name="RefreshLayout">
         <attr name="topView" format="reference"/>
         <attr name="mainView" format="reference"/>
         <attr name="bottomView" format="reference"/>

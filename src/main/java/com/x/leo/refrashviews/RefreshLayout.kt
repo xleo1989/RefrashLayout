@@ -26,7 +26,7 @@ import java.io.Serializable
  * @下一步：
  */
 
-class RefrashLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
+class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
     constructor(ctx: Context) : this(ctx, null)
 
     private var topRefrashViewId: Int = -1
@@ -41,22 +41,28 @@ class RefrashLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
     private var isTopRefrash: Boolean = false
     private var isBottomRefrash: Boolean = false
     var onRefrashListener: OnRefrashListener? = null
-    val STATEDIRECTION = 0x0012.shl(3)
-    val STATEIDLE = 0x0011.shl(3)
-    val STATEDRAGING = 0x0013.shl(3)
-    val STATENOTDRAG = 0x0014.shl(3)
+
+    companion object {
+        const val STATEDIRECTION = 0x0012.shl(3)
+        const val STATEIDLE = 0x0011.shl(3)
+        const val STATEDRAGING = 0x0013.shl(3)
+        const val STATENOTDRAG = 0x0014.shl(3)
+
+        const val DIR_NONE: Int = 0x1122
+        const val DIR_DOWN: Int = 0x1123
+        const val DIR_UP: Int = 0x1124
+        const val DO_LOG = false
+    }
+
     private var currentState = STATEIDLE
 
-    private val DIR_NONE: Int = 0x1122
-    private val DIR_DOWN: Int = 0x1123
 
-    private val DIR_UP: Int = 0x1124
     private var direction: Int = DIR_NONE
-    val DO_LOG = false
+
     private var offset: Int = 0
 
     private var doReDispatchEvent: Boolean = false
-    val dragHelper: ViewDragHelper by lazy {
+    private val dragHelper: ViewDragHelper by lazy {
         ViewDragHelper.create(this, 1.0f, object : ViewDragHelper.Callback() {
             override fun tryCaptureView(child: View?, pointerId: Int): Boolean {
                 if (child!! == mainView) {
@@ -212,17 +218,17 @@ class RefrashLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
 
     init {
         if (attr != null) {
-            val attrs = ctx.obtainStyledAttributes(attr!!, R.styleable.RefrashLayout)
-            topRefrashViewId = attrs.getResourceId(R.styleable.RefrashLayout_topView, -1)
-            bottomRefrashViewId = attrs.getResourceId(R.styleable.RefrashLayout_bottomView, -1)
-            mainViewId = attrs.getResourceId(R.styleable.RefrashLayout_mainView, -1)
+            val attrs = ctx.obtainStyledAttributes(attr!!, R.styleable.RefreshLayout)
+            topRefrashViewId = attrs.getResourceId(R.styleable.RefreshLayout_topView, -1)
+            bottomRefrashViewId = attrs.getResourceId(R.styleable.RefreshLayout_bottomView, -1)
+            mainViewId = attrs.getResourceId(R.styleable.RefreshLayout_mainView, -1)
         }
     }
 
 
     fun logd(s: String) {
         if (DO_LOG) {
-            Log.d("RefrashLayout", s)
+            Log.d("RefreshLayout", s)
         }
     }
 
