@@ -246,12 +246,12 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
                     currentState = STATEDRAGING
                     return true
                 }
-                if (listView.firstVisiblePosition == 0 && isChildFullVisible(listView.getChildAt(0)) && isTopRefrashable()) {
+                if (listView.firstVisiblePosition == 0 && isChildTopVisible(listView.getChildAt(0)) && isTopRefrashable()) {
                     currentState = STATEDRAGING
                     return true
 
                 }
-                if (listView.lastVisiblePosition == listView.adapter.count - 1 && isChildFullVisible(listView.getChildAt(listView.childCount - 1)) && isBottomRefrashable()) {
+                if (listView.lastVisiblePosition == listView.adapter.count - 1 && isChildBottomVisible(listView.getChildAt(listView.childCount - 1)) && isBottomRefrashable()) {
                     currentState = STATEDRAGING
                     return true
                 }
@@ -317,18 +317,35 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
         return false
     }
 
-    //TODO:
-    private fun isChildFullVisible(childAt: View?): Boolean {
+
+    private fun isChildTopVisible(childAt: View?): Boolean {
         if (childAt == null) {
             return false
         }
-
-        val rect = Rect()
-        childAt.getLocalVisibleRect(rect)
-        if (rect.height() >= childAt.height * 0.8) {
-            return true
+        return try {
+            val mainRect = Rect()
+            mainView!!.getGlobalVisibleRect(mainRect)
+            val rect = Rect()
+            childAt.getGlobalVisibleRect(rect)
+            rect.top >= mainRect.top
+        } catch (e: Throwable) {
+            true
         }
-        return false
+    }
+
+    private fun isChildBottomVisible(childAt: View?): Boolean {
+        if (childAt == null) {
+            return false
+        }
+        return try {
+            val mainRect = Rect()
+            mainView!!.getGlobalVisibleRect(mainRect)
+            val rect = Rect()
+            childAt.getGlobalVisibleRect(rect)
+            rect.bottom <= mainRect.bottom
+        } catch (e: Throwable) {
+            true
+        }
     }
 
     private fun changeToNotDragState() {
