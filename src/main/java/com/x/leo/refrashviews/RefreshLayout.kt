@@ -327,6 +327,7 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
             mainView!!.getGlobalVisibleRect(mainRect)
             val rect = Rect()
             childAt.getGlobalVisibleRect(rect)
+            Log.d("Visible","main:" + mainRect.toString() + ";current:" + rect.toString())
             rect.top >= mainRect.top
         } catch (e: Throwable) {
             true
@@ -353,23 +354,15 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
     }
 
     private fun isBottomRefrashable(): Boolean {
-        if (bottomView == null) {
-            return false
-        } else if (bottomView!!.translationY < 0 || direction == DIR_UP) {
-            return true
-        } else {
-            return false
-        }
+        return if (bottomView == null) {
+            false
+        } else  bottomView!!.translationY < 0 || direction == DIR_UP
     }
 
     private fun isTopRefrashable(): Boolean {
-        if (topRefrashView == null) {
-            return false
-        } else if (direction == DIR_DOWN || (topRefrashView != null && topRefrashView!!.translationY > 0)) {
-            return true
-        } else {
-            return false
-        }
+        return if (topRefrashView == null) {
+            false
+        } else direction == DIR_DOWN || (topRefrashView != null && topRefrashView!!.translationY > 0)
     }
 
     private val eventLog: EventLogHolder by lazy {
