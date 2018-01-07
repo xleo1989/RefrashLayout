@@ -327,8 +327,8 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
             mainView!!.getGlobalVisibleRect(mainRect)
             val rect = Rect()
             childAt.getGlobalVisibleRect(rect)
-            Log.d("Visible","main:" + mainRect.toString() + ";current:" + rect.toString())
-            rect.top >= mainRect.top
+            Log.d("Visible", "main:" + mainRect.toString() + ";current:" + rect.toString())
+            (rect.top >= mainRect.top && rect.height() >= childAt.height - 1) || mainRect.height() < mainView!!.height
         } catch (e: Throwable) {
             true
         }
@@ -343,7 +343,7 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
             mainView!!.getGlobalVisibleRect(mainRect)
             val rect = Rect()
             childAt.getGlobalVisibleRect(rect)
-            rect.bottom <= mainRect.bottom
+            (rect.bottom <= mainRect.bottom && rect.height() >= childAt.height - 1) || mainRect.height() < mainView!!.height
         } catch (e: Throwable) {
             true
         }
@@ -356,7 +356,7 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
     private fun isBottomRefrashable(): Boolean {
         return if (bottomView == null) {
             false
-        } else  bottomView!!.translationY < 0 || direction == DIR_UP
+        } else bottomView!!.translationY < 0 || direction == DIR_UP
     }
 
     private fun isTopRefrashable(): Boolean {
