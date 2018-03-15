@@ -64,14 +64,14 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
     private var doReDispatchEvent: Boolean = false
     private val dragHelper: ViewDragHelper by lazy {
         ViewDragHelper.create(this, 1.0f, object : ViewDragHelper.Callback() {
-            override fun tryCaptureView(child: View?, pointerId: Int): Boolean {
+            override fun tryCaptureView(child: View, pointerId: Int): Boolean {
                 if (child!! == mainView) {
                     return true
                 }
                 return false
             }
 
-            override fun clampViewPositionVertical(child: View?, top: Int, dy: Int): Int {
+            override fun clampViewPositionVertical(child: View, top: Int, dy: Int): Int {
                 var realTop = top
 
                 if (doSetOffset) {
@@ -97,15 +97,15 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
                 return realTop
             }
 
-            override fun clampViewPositionHorizontal(child: View?, left: Int, dx: Int): Int {
+            override fun clampViewPositionHorizontal(child: View, left: Int, dx: Int): Int {
                 return child!!.left
             }
 
-            override fun onViewReleased(releasedChild: View?, xvel: Float, yvel: Float) {
+            override fun onViewReleased(releasedChild: View, xvel: Float, yvel: Float) {
                 resetViews()
             }
 
-            override fun onViewPositionChanged(changedView: View?, left: Int, top: Int, dx: Int, dy: Int) {
+            override fun onViewPositionChanged(changedView: View, left: Int, top: Int, dx: Int, dy: Int) {
                 // logd("newtop:" + top + ";dy:" + dy)
                 locateViews(top)
                 if (doReDispatchEvent) {
@@ -123,7 +123,7 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
         when (currentState) {
             STATEDRAGING -> {
                 if (dragHelper.activePointerId == localEvent!!.getPointerId(localEvent!!.actionIndex))
-                    dragHelper.processTouchEvent(localEvent)
+                    dragHelper.processTouchEvent(localEvent!!)
             }
             STATENOTDRAG -> {
                 mainView!!.dispatchTouchEvent(localEvent)
@@ -233,7 +233,9 @@ class RefreshLayout(ctx: Context, attr: AttributeSet?) : ViewGroup(ctx, attr) {
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
-        dragHelper.shouldInterceptTouchEvent(ev)
+        if (ev != null) {
+            dragHelper.shouldInterceptTouchEvent(ev)
+        }
         return true
     }
 
